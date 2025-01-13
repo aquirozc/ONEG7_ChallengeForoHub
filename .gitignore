@@ -1,0 +1,4 @@
+target
+.vscode
+*.pem
+.DS_Store
