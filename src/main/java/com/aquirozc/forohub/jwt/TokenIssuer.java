@@ -3,6 +3,7 @@ package com.aquirozc.forohub.jwt;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
@@ -19,7 +20,7 @@ public class TokenIssuer {
         this.encoder = encoder;
     }
 
-    public String generateToken(User user) {
+    public Jwt generateToken(User user) {
 
         Instant now = Instant.now();
       
@@ -30,7 +31,7 @@ public class TokenIssuer {
                 .subject(user.getId() + "")
                 .build();
 
-        return this.encoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
+        return this.encoder.encode(JwtEncoderParameters.from(claims));
         
     }
 

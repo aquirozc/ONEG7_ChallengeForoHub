@@ -1,7 +1,6 @@
 package com.aquirozc.forohub.data;
 
 import com.aquirozc.forohub.config.EncoderSingleton;
-import com.aquirozc.forohub.dao.UserLoginDAO;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,20 +18,16 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "USUARIOS", schema = "FOROHUB")
 public class User{
-
-    public User(UserLoginDAO u) {
-        this.email = u.getEmail();
-        setPassword(u.getPassword());
-    }
     
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name = "USUARIO_ID")
     private long id;
 
     @Column(name = "CORREO", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "CONTRASENA", nullable = false)
+    @Column(name = "CONTRASEÑA", nullable = false)
     private String password;
 
     @JsonProperty("password")

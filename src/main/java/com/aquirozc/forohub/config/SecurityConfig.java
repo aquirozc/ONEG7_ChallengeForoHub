@@ -12,9 +12,11 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
+import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.aquirozc.forohub.rsa2048.RSAKeyPair;
+import com.aquirozc.forohub.filter.JWTFilter;
+import com.aquirozc.forohub.jwt.RSAKeyPair;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -27,9 +29,11 @@ import com.nimbusds.jose.proc.SecurityContext;
 public class SecurityConfig {
 
     private RSAKeyPair keyPair;
+    private JWTFilter jwtFilter;
 
-    public SecurityConfig(RSAKeyPair keyPair) {
+    public SecurityConfig(RSAKeyPair keyPair, JWTFilter jwtFilter) {
         this.keyPair = keyPair;
+        this.jwtFilter = jwtFilter;
     }
 
     @Bean
@@ -44,6 +48,8 @@ public class SecurityConfig {
         });
 
         http = http.oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
+
+        http = http.addFilterAfter(jwtFilter, BearerTokenAuthenticationFilter.class);
 
         return http.build();
 

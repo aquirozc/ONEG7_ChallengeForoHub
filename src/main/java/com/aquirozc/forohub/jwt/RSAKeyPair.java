@@ -1,4 +1,4 @@
-package com.aquirozc.forohub.rsa2048;
+package com.aquirozc.forohub.jwt;
 
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
