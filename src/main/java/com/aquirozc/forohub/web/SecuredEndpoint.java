@@ -1,4 +1,4 @@
-package com.aquirozc.forohub.controller;
+package com.aquirozc.forohub.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

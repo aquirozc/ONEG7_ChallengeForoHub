@@ -1,9 +1,11 @@
-package com.aquirozc.forohub.filter;
+package com.aquirozc.forohub.jwt;
 
 import java.io.IOException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import com.aquirozc.forohub.repo.LoginRepository;
+
+import com.aquirozc.forohub.domain.repo.LoginRepository;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

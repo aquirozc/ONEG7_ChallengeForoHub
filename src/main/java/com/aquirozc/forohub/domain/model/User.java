@@ -1,7 +1,5 @@
-package com.aquirozc.forohub.data;
+package com.aquirozc.forohub.domain.model;
 
-import com.aquirozc.forohub.config.EncoderSingleton;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,10 +9,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 @Entity
 @Table(name = "USUARIOS", schema = "FOROHUB")
 public class User{
@@ -24,16 +25,14 @@ public class User{
     @Column(name = "USUARIO_ID")
     private long id;
 
+    @Column(name = "NOMBRE", nullable = false)
+    private String name;
+
     @Column(name = "CORREO", nullable = false, unique = true)
     private String email;
 
     @Column(name = "CONTRASEÑA", nullable = false)
     private String password;
-
-    @JsonProperty("password")
-    public void setPassword(String password) {
-        this.password = EncoderSingleton.getInstance().encode(password);
-    }
     
 }
     

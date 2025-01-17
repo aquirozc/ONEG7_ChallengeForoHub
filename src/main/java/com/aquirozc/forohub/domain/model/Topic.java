@@ -1,9 +1,6 @@
-package com.aquirozc.forohub.data;
+package com.aquirozc.forohub.domain.model;
 
 import java.sql.Date;
-
-import com.aquirozc.forohub.transitional.TopicDAO;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -28,16 +25,6 @@ import lombok.Setter;
 @Table(name = "TEMAS", schema = "FOROHUB", uniqueConstraints = @UniqueConstraint(columnNames = {"TITULO", "CURSO"}))
 public class Topic {
 
-    public Topic(TopicDAO topic, User user) {
-        this.title = topic.getTitle();
-        this.message = topic.getMessage();
-        this.date = new Date(System.currentTimeMillis());
-        this.isActive = true;
-        this.course = topic.getCourse();
-        this.user = user;
-    }
-
-
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "TEMA_ID")
@@ -61,9 +48,5 @@ public class Topic {
     @ManyToOne
     @JoinColumn(name = "USUARIO_FK", nullable = false, referencedColumnName = "USUARIO_ID")
     private User user;
-    
-    @JsonProperty("user")
-    private long getUserId() {
-        return user.getId();
-    }
+
 }

@@ -1,10 +1,10 @@
-package com.aquirozc.forohub.transitional;
+package com.aquirozc.forohub.domain.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 
 @Getter
-public class TopicDAO {
+public class TopicCreationRequest {
 
     @NotBlank(message = "El título no puede estar vacío")
     private String title;

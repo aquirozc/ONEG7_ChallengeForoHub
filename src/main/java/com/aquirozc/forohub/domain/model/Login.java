@@ -1,4 +1,6 @@
-package com.aquirozc.forohub.data;
+package com.aquirozc.forohub.domain.model;
+
+import java.sql.Date;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,6 +28,9 @@ public class Login {
 
     @Column(name = "REVOCADO")
     private boolean revoked;
+
+    @Column(name ="VENCIMIENTO")
+    private Date expiration;
 
     @ManyToOne
     @JoinColumn(name = "USUARIO_FK", nullable = false)

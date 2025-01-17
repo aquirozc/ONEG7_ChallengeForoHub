@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.oauth2.server.resource.web.authentication.BearerTokenAuthenticationFilter;
 import org.springframework.security.web.SecurityFilterChain;
 
-import com.aquirozc.forohub.filter.JWTFilter;
+import com.aquirozc.forohub.jwt.JWTFilter;
 import com.aquirozc.forohub.jwt.RSAKeyPair;
 import com.nimbusds.jose.jwk.JWK;
 import com.nimbusds.jose.jwk.JWKSet;

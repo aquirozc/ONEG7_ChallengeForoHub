@@ -9,7 +9,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
-import com.aquirozc.forohub.data.User;
+import com.aquirozc.forohub.domain.model.User;
 
 @Service
 public class TokenIssuer {

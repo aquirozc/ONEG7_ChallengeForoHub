@@ -10,8 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.aquirozc.forohub.data.User;
-import com.aquirozc.forohub.repo.UserRepository;
+import com.aquirozc.forohub.domain.model.User;
+import com.aquirozc.forohub.domain.repo.UserRepository;
 
 @Configuration
 public class AuthConfig {
